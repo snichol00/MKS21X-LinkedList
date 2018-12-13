@@ -2,24 +2,27 @@ public class Node{
   private int data;
   private Node next,prev;
 
+  //Constructor
   public Node(int myData, Node nextNode, Node prevNode) {
     data = myData;
     next = nextNode;
     prev = prevNode;
   }
 
-  public int getData(){
+  //Accessors
+  public int data(){
     return data;
   }
 
-  public Node getNext(){
+  public Node next(){
     return next;
   }
 
-  public Node getPrev(){
+  public Node prev(){
     return prev;
   }
 
+  //Mutators
   public void setData(int value){
     data = value;
   }
