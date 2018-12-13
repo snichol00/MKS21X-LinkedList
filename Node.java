@@ -7,4 +7,16 @@ public class Node{
     next = nextNode;
     prev = prevNode;
   }
+
+  public int getData(){
+    return data;
+  }
+
+  public Node getNext(){
+    return next;
+  }
+
+  public Node getPrev(){
+    return prev;
+  }
 }

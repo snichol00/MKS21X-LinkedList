@@ -23,7 +23,7 @@ public class MyLinkedList{
     String output = "[";
     Node currentNode = start;
     while (currentNode.getNext() != null){
-      output += currentNode.getVal() + ",";
+      output += currentNode.getData() + ",";
       currentNode = currentNode.getNext();
     }
     return output + "]";
