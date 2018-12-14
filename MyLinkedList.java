@@ -90,4 +90,10 @@ public class MyLinkedList{
     index.setNext() = endAddition;
     size++;
   }
+
+  public Integer remove(int index){
+    //need to do border case of size zero;
+    (index - 1).setNext(index + 1);
+    size--;
+  }
 }
