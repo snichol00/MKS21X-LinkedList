@@ -89,6 +89,7 @@ public class MyLinkedList{
     Node endAddition = (value, index, index + 1);
     index.setNext() = endAddition;
     size++;
+    //fix index to make Node
   }
 
   public Integer remove(int index){
