@@ -38,11 +38,47 @@ public class MyLinkedList{
   }
 
   private Integer get(int index){
+    //idx doesn't actually iterate through the string, but it keeps track of where current is
     int idx = 0;
     Node current = start;
-    while (current.next() != null && idx != index){
+    //loops through until it reaches the end or it reaches the index
+    while (current.next() != null && idx < index){
       idx ++;
     }
-    return current.value();
+    //I have to modify this so it doesn't return the last element if the idx doesn't exist
+    return current.data();
+  }
+
+  public Integer set(int index, Integer value){
+    oldVal = data.get(index);
+    data.get(x) = value;
+    return oldVal;
+  }
+
+  public boolean contains(Integer value){
+    Node current = start;
+    while (current.next() != null){
+      if (current.data() = value){
+        return true;
+      }
+      current = current.next();
+    }
+    return false;
+  }
+
+  public int indexOf(Integer value){
+    Node current = start;
+    int idx = 0;
+    while (current.next() != null){
+      if (current.data() = value){
+        return idx;
+      }
+      current = current.next();
+      idx ++;
+    }
+  }
+
+  public void add(int index,Integer value){
+
   }
 }
