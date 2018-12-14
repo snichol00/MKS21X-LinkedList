@@ -50,25 +50,32 @@ public class MyLinkedList{
   }
 
   public Integer set(int index, Integer value){
+    //save the old value to return it later
     oldVal = data.get(index);
+    //set value
     data.get(x) = value;
     return oldVal;
   }
 
   public boolean contains(Integer value){
     Node current = start;
+    //loops through until it reaches the end (or if it returns true before)
     while (current.next() != null){
+      //if it reaches the value, return true
       if (current.data() = value){
         return true;
       }
       current = current.next();
     }
+    //if it reaches the end of the list without finding the value, return false
     return false;
   }
 
   public int indexOf(Integer value){
     Node current = start;
+    //idx doesn't actually iterate through the elements, it just keeps track of where current is
     int idx = 0;
+    //loops through until it reaches the end (or if it returns true before)
     while (current.next() != null){
       if (current.data() = value){
         return idx;
@@ -79,6 +86,8 @@ public class MyLinkedList{
   }
 
   public void add(int index,Integer value){
-
+    Node endAddition = (value, index, index + 1);
+    index.setNext() = endAddition;
+    size++;
   }
 }
