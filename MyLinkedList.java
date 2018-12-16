@@ -47,6 +47,9 @@ public class MyLinkedList{
   }
 
   public Integer get(int index){
+    if (index < 0 || index >= size){
+      throw new IndexOutOfBoundsException();
+    }
     //idx doesn't actually iterate through the string, but it keeps track of where current is
     int idx = 0;
     Node current = start;
@@ -59,6 +62,9 @@ public class MyLinkedList{
   }
 
   private Node getNode(int MyNode){
+    if (MyNode < 0 || MyNode >= size){
+      throw new IndexOutOfBoundsException();
+    }
     //idx doesn't actually iterate through the string, but it keeps track of where current is
     int idx = 0;
     Node current = start;
@@ -70,6 +76,7 @@ public class MyLinkedList{
       current =  current.next();
       idx++;
     }
+    return current;
   }
 
   public Integer set(int index, Integer value){
@@ -110,13 +117,32 @@ public class MyLinkedList{
       current = current.next();
       idx ++;
     }
+    return -1;
   }
 
   public void add(int index,Integer value){
-    Node endAddition = new Node(index-1, index, null);
-    index.setNext() = endAddition;
-    size++;
-    //fix index to make Node
+    if (index < 0 || index > size){
+      throw new IndexOutOfBoundsException();
+    }
+    if (index = 0){
+      Node addition = new Node(value, null, this.getNode(index));
+      this.get(index).setPrev(addition)
+      start = addition;
+      size++;
+    }
+    if (index = size){
+      Node addition = new Node(value, this.getNode(index-1), null);
+      this.getNode(index-1).setNext(addition);
+      end = addition;
+      size++;
+    }
+    else{
+      Node addition = new Node(value, this.getNode(index-1), this.getNode(index));
+      this.getNode(index-1).setNext(addition);
+      this.getNode(index).setPrev(addition);
+      size++;
+      //fix index to make Node
+    }
   }
 
   public Integer remove(int index){
