@@ -3,10 +3,10 @@ public class MyLinkedList{
   private Node start,end;
 
   //Constructor
-  public MyLinkedList(int length, Node myStart, Node myEnd){
-    size = length;
-    start = myStart;
-    end = myEnd;
+  public MyLinkedList(){
+    size = 0;
+    start = null;
+    end = null;
   }
 
   public int size(){
@@ -38,15 +38,15 @@ public class MyLinkedList{
     }
     String output = "[";
     //currentNode acts like the index, but uses next()
-    Node currentNode = start;
+    Node current = start;
     //when next() is null, you've reached the end
-    while (currentNode.next() != null){
-      output += currentNode.data() + ",";
+    while (current.next() != null){
+      output += current.data() + ", ";
       //iterate the current, like doing x++
-      currentNode = currentNode.next();
+      current = current.next();
     }
     //won't account for last comma
-    return output + "]";
+    return output + end.data() + "]";
   }
 
   public Integer get(int index){
@@ -104,6 +104,9 @@ public class MyLinkedList{
       }
       current = current.next();
     }
+    if (end.data() == value){
+      return true;
+    }
     //if it reaches the end of the list without finding the value, return false
     return false;
   }
@@ -120,6 +123,9 @@ public class MyLinkedList{
       current = current.next();
       idx ++;
     }
+    if (end.data() == value){
+      return idx;
+    }
     return -1;
   }
 
@@ -133,7 +139,7 @@ public class MyLinkedList{
       start = addition;
       size++;
     }
-    if (index == size){
+    else if (index == size){
       Node addition = new Node(value, this.getNode(index-1), null);
       this.getNode(index-1).setNext(addition);
       end = addition;
