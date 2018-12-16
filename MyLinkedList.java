@@ -55,7 +55,7 @@ public class MyLinkedList{
     Node current = start;
     //loops through until it reaches the end or it reaches the index
     while (current.next() != null){
-      if (idx = MyNode){
+      if (idx == MyNode){
         return current;
       }
       current =  current.next();
@@ -64,11 +64,15 @@ public class MyLinkedList{
   }
 
   public Integer set(int index, Integer value){
+    if (index < 0 || index >= size){
+      throw new IndexOutOfBoundsException();
+    }
     //save the old value to return it later
-    Node oldVal = index.getData()
+    Node oldVal = this.getNode(index);
+    Integer oldData = oldVal.data();
     //set value
-    data.get(x) = value;
-    return oldVal;
+    oldVal.setData(value);
+    return oldData;
   }
 
   public boolean contains(Integer value){
