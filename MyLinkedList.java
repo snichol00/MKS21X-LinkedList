@@ -14,13 +14,22 @@ public class MyLinkedList{
   }
 
   public boolean add(int value){
-    //creates new node to set value to
-    Node endAddition = new Node(value, end, null);
-    end.setNext(endAddition);
-    //makes sure end is updated
-    end = endAddition;
-    size++;
-    return true;
+    if (size == 0){
+      Node only = new Node(value, null, null);
+      end = only;
+      start = only;
+      size++;
+      return true;
+    }
+    else{
+      //creates new node to set value to
+      Node endAddition = new Node(value, end, null);
+      end.setNext(endAddition);
+      //makes sure end is updated
+      end = endAddition;
+      size++;
+      return true;
+    }
   }
 
   public String toString(){
