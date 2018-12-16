@@ -29,7 +29,7 @@ public class MyLinkedList{
     Node currentNode = start;
     //when next() is null, you've reached the end
     while (currentNode.next() != null){
-      output += currentNode.getData() + ",";
+      output += currentNode.data() + ",";
       //iterate the current, like doing x++
       currentNode = currentNode.next();
     }
@@ -37,7 +37,7 @@ public class MyLinkedList{
     return output + "]";
   }
 
-  private Integer get(int index){
+  public Integer get(int index){
     //idx doesn't actually iterate through the string, but it keeps track of where current is
     int idx = 0;
     Node current = start;
@@ -49,9 +49,23 @@ public class MyLinkedList{
     return current.data();
   }
 
+  private Node getNode(int MyNode){
+    //idx doesn't actually iterate through the string, but it keeps track of where current is
+    int idx = 0;
+    Node current = start;
+    //loops through until it reaches the end or it reaches the index
+    while (current.next() != null){
+      if (idx = MyNode){
+        return current;
+      }
+      current =  current.next();
+      idx++;
+    }
+  }
+
   public Integer set(int index, Integer value){
     //save the old value to return it later
-    oldVal = data.get(index);
+    Node oldVal = index.getData()
     //set value
     data.get(x) = value;
     return oldVal;
@@ -86,7 +100,7 @@ public class MyLinkedList{
   }
 
   public void add(int index,Integer value){
-    Node endAddition = (value, index, index + 1);
+    Node endAddition = new Node(index-1, index, null);
     index.setNext() = endAddition;
     size++;
     //fix index to make Node
@@ -94,7 +108,19 @@ public class MyLinkedList{
 
   public Integer remove(int index){
     //need to do border case of size zero;
-    (index - 1).setNext(index + 1);
+    index.prev().setNext() = index.next();
     size--;
+  }
+
+  public boolean remove(Integer value){
+    current = start;
+    while (current.next() != null){
+      if (current.getData().equals(value)){
+        current.prev().setNext() = current.next();
+        size--;
+        return true;
+      }
+    }
+    return false;
   }
 }
