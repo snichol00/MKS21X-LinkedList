@@ -146,9 +146,33 @@ public class MyLinkedList{
   }
 
   public Integer remove(int index){
-    //need to do border case of size zero;
-    index.prev().setNext() = index.next();
-    size--;
+    if (index < 0 || index >= size){
+      throw new IndexOutOfBoundsException();
+    }
+    if (size = 0 || size = 1){
+      start = null;
+      end = null;
+      size = 0;
+      return null;
+    }
+    else if (index = 0){
+      oldData = this.getData(start);
+      start = getNode(index + 1);
+      start.setPrev(null);
+      size --;
+    }
+    else if (index = size - 1){
+      oldData = this.getData(end);
+      end = getNode(index - 1);
+      end.setNext(null);
+      size --;
+    }
+    else{
+      oldData = this.getData(index);
+      index.prev().setNext() = index.next();
+      size--;
+    }
+    return oldData;
   }
 
   public boolean remove(Integer value){
