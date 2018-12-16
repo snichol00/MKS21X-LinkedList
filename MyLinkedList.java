@@ -33,6 +33,9 @@ public class MyLinkedList{
   }
 
   public String toString(){
+    if (size == 0){
+      return "[]";
+    }
     String output = "[";
     //currentNode acts like the index, but uses next()
     Node currentNode = start;
@@ -96,7 +99,7 @@ public class MyLinkedList{
     //loops through until it reaches the end (or if it returns true before)
     while (current.next() != null){
       //if it reaches the value, return true
-      if (current.data() = value){
+      if (current.data() == value){
         return true;
       }
       current = current.next();
@@ -111,7 +114,7 @@ public class MyLinkedList{
     int idx = 0;
     //loops through until it reaches the end (or if it returns true before)
     while (current.next() != null){
-      if (current.data() = value){
+      if (current.data() == value){
         return idx;
       }
       current = current.next();
@@ -124,13 +127,13 @@ public class MyLinkedList{
     if (index < 0 || index > size){
       throw new IndexOutOfBoundsException();
     }
-    if (index = 0){
+    if (index == 0){
       Node addition = new Node(value, null, this.getNode(index));
-      this.get(index).setPrev(addition)
+      getNode(index).setPrev(addition);
       start = addition;
       size++;
     }
-    if (index = size){
+    if (index == size){
       Node addition = new Node(value, this.getNode(index-1), null);
       this.getNode(index-1).setNext(addition);
       end = addition;
@@ -149,40 +152,38 @@ public class MyLinkedList{
     if (index < 0 || index >= size){
       throw new IndexOutOfBoundsException();
     }
-    if (size = 0 || size = 1){
+    Integer oldData;
+    if (size == 0 || size == 1){
       start = null;
       end = null;
       size = 0;
-      return null;
+      oldData = null;
     }
-    else if (index = 0){
-      oldData = this.getData(start);
+    else if (index == 0){
+      oldData = start.data();
       start = getNode(index + 1);
       start.setPrev(null);
       size --;
     }
-    else if (index = size - 1){
-      oldData = this.getData(end);
+    else if (index == size - 1){
+      oldData = end.data();
       end = getNode(index - 1);
       end.setNext(null);
       size --;
     }
     else{
-      oldData = this.getData(index);
-      index.prev().setNext() = index.next();
+      oldData = getNode(index).data();
+      getNode(index-1).setNext(getNode(index+1));
+      getNode(index+1).setPrev(getNode(index-1));
       size--;
     }
     return oldData;
   }
 
   public boolean remove(Integer value){
-    current = start;
-    while (current.next() != null){
-      if (current.getData().equals(value)){
-        current.prev().setNext() = current.next();
-        size--;
-        return true;
-      }
+    if (this.contains(value)){
+      this.remove(indexOf(value));
+      return true;
     }
     return false;
   }
